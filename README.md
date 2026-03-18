@@ -142,13 +142,3 @@ CREATE INDEX idx_div_history_account ON dividend_history(account_id);
 ```
 
 ---
-
-## 🚀 프로젝트 이름 추천
-- PortfolioService
-- DividendTracker
-- StockFlow
-
----
-
-## ✅ 한 줄 정리
-> 금융기관 → 계좌 → 거래/배당 구조로 현
