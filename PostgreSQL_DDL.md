@@ -128,6 +128,26 @@ CREATE TABLE dividend_history (
 );
 
 -- =========================
+-- dividend_attachment
+-- =========================
+CREATE TABLE dividend_attachment (
+    id BIGSERIAL PRIMARY KEY,
+    dividend_history_id BIGINT NOT NULL,
+    
+    file_name VARCHAR(255) NOT NULL,        -- 원본 파일명
+    file_path VARCHAR(500) NOT NULL,        -- 저장 경로
+    file_size BIGINT,                       -- 파일 크기 (byte)
+    file_type VARCHAR(50),                  -- MIME 타입 (image/png 등)
+    
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+
+    CONSTRAINT fk_attachment_dividend_history
+        FOREIGN KEY (dividend_history_id)
+        REFERENCES dividend_history(id)
+        ON DELETE CASCADE
+);
+
+-- =========================
 -- INDEX
 -- =========================
 CREATE INDEX idx_trade_stock ON stock_trade(stock_id);
@@ -138,6 +158,8 @@ CREATE INDEX idx_dividend_stock ON dividend(stock_id);
 
 CREATE INDEX idx_div_history_account ON dividend_history(account_id);
 CREATE INDEX idx_div_history_stock ON dividend_history(stock_id);
+
+CREATE INDEX idx_attachment_dividend_history ON dividend_attachment(dividend_history_id);
 ```
 
 
