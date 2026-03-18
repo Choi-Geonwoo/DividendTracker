@@ -162,16 +162,10 @@ CHECK (type IN ('BANK', 'SECURITIES'));
 ON DELETE RESTRICT   -- 기본 (추천)
 ON DELETE CASCADE    -- 자동 삭제 (주의)
 ```
-
 👉 금융 데이터는 보통 RESTRICT 유지 추천
 
 2️⃣ 소수점 정밀도
 ```sql
 NUMERIC(18,4)
 ```
-
 👉 돈/주식 → 안전한 선택
-
-✅ 한 줄 정리
-
-이 DDL은 그대로 실행하면 “실무 수준 구조”가 바로 만들어지는 상태
